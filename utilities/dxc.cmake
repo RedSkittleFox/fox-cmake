@@ -31,8 +31,8 @@ macro(add_dxc_shader_target PROJECT_NAME SOURCE_LIST SHADER_OUTPUT_PATH)
 	set(shader_src ${${SOURCE_LIST}})
 	set_source_files_properties(${shader_src} PROPERTIES VS_TOOL_OVERRIDE CustomBuild)
 
-	include(FetchContent)
-	FetchContent_MakeAvailable(dxc)
+	# include(FetchContent)
+	# FetchContent_MakeAvailable(dxc)
 
 	if("${DXC_PATH}" STREQUAL "")
 		message( FATAL_ERROR "DXC_PATH not defined." )
