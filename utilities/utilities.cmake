@@ -41,7 +41,7 @@ macro(setup_project)
     	
         set(CMAKE_SYSTEM_VERSION 10.0.22000.0)
     
-        set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bin")
+        set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bin-lib")
         set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bin-etc")
         set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_SOURCE_DIR}/bin")
     
@@ -57,6 +57,8 @@ macro(setup_project)
 
     if(NOT ${IPO_SUPPORTED})
         message(STATUS "IPO / LTO not supported: <${IPO_NOT_SUPPORTED_ERROR}>")
+    else()
+        message(STATUS "IPO / LTO supported.")
     endif()
 endmacro()
 

@@ -1,12 +1,12 @@
-include(FetchContent)
+include(utilities/fetch_content.cmake)
 
 function(fetch_make_available_d3d12_agility_sdk library_name)
-	
-	FetchContent_Declare(${library_name}
-       URL https://www.nuget.org/api/v2/package/Microsoft.Direct3D.D3D12/1.706.3-preview
-	   )
-	
-	FetchContent_MakeAvailable(${library_name})
+		
+	FetchContent_Declare_URL_MakeAvailable(
+		${library_name}
+		https://www.nuget.org/api/v2/package/Microsoft.Direct3D.D3D12/1.706.3-preview
+	)
+
 	file(GLOB_RECURSE d3d12-agility-inc "${${library_name}_SOURCE_DIR}/build/native/include/*.h")
 	add_library(${library_name} INTERFACE ${d3d12-agility-inc})
 	target_include_directories(${library_name} INTERFACE "${${library_name}_SOURCE_DIR}/build/native/include")
@@ -37,5 +37,7 @@ function(fetch_make_available_d3d12_agility_sdk library_name)
 	add_dependencies(${library_name} 
 		${library_name}_copy_files
 	)
+
+	add_library(fox.cmake::${library_name} ALIAS ${library_name})
 
 endfunction()

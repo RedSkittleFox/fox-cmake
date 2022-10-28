@@ -63,18 +63,18 @@ function(fetch_make_available_imgui library_name)
 #endif
 #define IMGUI_IMPL_API
 
-#include <foxutil/types.hpp>
+// #include <foxutil/types.hpp>
 
-#define IM_VEC2_CLASS_EXTRA                                                     \\
-        template<class T>                                                       \\
-        constexpr ImVec2(const ::foxutil::vec2<T>& f) : x(static_cast<float>(f.x)), y(static_cast<float>(f.y)) {}       \\
-        template<class T>                                                       \\
-        operator ::foxutil::vec2<T>() const { return ::foxutil::vec2<T>{ static_cast<T>(x), static_cast<T>(y) }; }
-#define IM_VEC4_CLASS_EXTRA                                                     \\
-        template<class T>                                                       \\
-        constexpr ImVec4(const ::foxutil::vec4<T>& f) : x(static_cast<float>(f.x)), y(static_cast<float>(f.y)), z(static_cast<float>(f.z)), w(static_cast<float>(f.w)) {}   \\
-        template<class T>                                                       \\
-        operator ::foxutil::vec4<T>() const { return ::foxutil::vec4<T>{ static_cast<T>(x), static_cast<T>(y), static_cast<T>(z), static_cast<T>(w)}; }
+// #define IM_VEC2_CLASS_EXTRA                                                     \\
+//         template<class T>                                                       \\
+//         constexpr ImVec2(const ::foxutil::vec2<T>& f) : x(static_cast<float>(f.x)), y(static_cast<float>(f.y)) {}       \\
+//         template<class T>                                                       \\
+//         operator ::foxutil::vec2<T>() const { return ::foxutil::vec2<T>{ static_cast<T>(x), static_cast<T>(y) }; }
+// #define IM_VEC4_CLASS_EXTRA                                                     \\
+//         template<class T>                                                       \\
+//         constexpr ImVec4(const ::foxutil::vec4<T>& f) : x(static_cast<float>(f.x)), y(static_cast<float>(f.y)), z(static_cast<float>(f.z)), w(static_cast<float>(f.w)) {}   \\
+//         template<class T>                                                       \\
+//        operator ::foxutil::vec4<T>() const { return ::foxutil::vec4<T>{ static_cast<T>(x), static_cast<T>(y), static_cast<T>(z), static_cast<T>(w)}; }
 
 struct ImGuiContext;
 IMGUI_API extern ImGuiContext* dll_shared_imgui_context;
@@ -115,8 +115,6 @@ IMGUI_API ImGuiContext* dll_shared_imgui_context = nullptr;
     target_compile_definitions(${library_name} PRIVATE IMGUI_IMPL)
     target_include_directories(${library_name} PUBLIC "${IMGUI_INC_DIR}/../")
 
-    target_link_libraries(${library_name} PUBLIC foxutil)
-
     add_library(
         ${library_name}_win32
         STATIC
@@ -137,5 +135,7 @@ IMGUI_API ImGuiContext* dll_shared_imgui_context = nullptr;
 
     target_link_libraries("${library_name}_d3d12" PUBLIC ${library_name})
     target_include_directories("${library_name}_d3d12" PUBLIC "${IMGUI_INC_DIR}/../")
+
+    add_library(fox.cmake::${library_name} ALIAS ${library_name})
 
 endfunction()

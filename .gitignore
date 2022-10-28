@@ -1,5 +1,4 @@
 bin/
 bin-etc/
 shader_src/
-CMakeLists.txt
 output/

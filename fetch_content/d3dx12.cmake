@@ -9,4 +9,6 @@ function(fetch_make_available_d3dx12 library_name)
 	add_library(${library_name} INTERFACE "${FETCHCONTENT_BASE_DIR}/d3dx12/d3dx12.h")
 	target_include_directories(${library_name} INTERFACE "${FETCHCONTENT_BASE_DIR}/d3dx12/")
 
+	add_library(fox.cmake::${library_name} ALIAS ${library_name})
+
 endfunction()
