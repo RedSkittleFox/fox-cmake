@@ -2,7 +2,7 @@ include(utilities/fetch_content.cmake)
 
 function(fetch_make_available_dxc library_name)
 	
-	FetchContent_Declare_URL_MakeAvailable(${library_name} https://github.com/microsoft/DirectXShaderCompiler/releases/download/v1.6.2112/dxc_2021_12_08.zip)
+	FetchContent_Declare_URL_Populate(${library_name} https://github.com/microsoft/DirectXShaderCompiler/releases/download/v1.6.2112/dxc_2021_12_08.zip)
 
 	file(MAKE_DIRECTORY ${${library_name}_SOURCE_DIR}/include)
 	file(COPY ${${library_name}_SOURCE_DIR}/inc/d3d12shader.h DESTINATION ${${library_name}_SOURCE_DIR}/include/dxc)

@@ -2,7 +2,7 @@ include(utilities/fetch_content.cmake)
 
 function(fetch_make_available_d3d12_agility_sdk library_name)
 		
-	FetchContent_Declare_URL_MakeAvailable(
+FetchContent_Declare_URL_Populate(
 		${library_name}
 		https://www.nuget.org/api/v2/package/Microsoft.Direct3D.D3D12/1.706.3-preview
 	)

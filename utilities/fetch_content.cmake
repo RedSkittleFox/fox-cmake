@@ -26,6 +26,7 @@ macro(FetchContent_Declare_URL_MakeAvailable LIBRARY_NAME URL)
         FetchContent_MakeAvailable(${LIBRARY_NAME})
     else()
         set(${LIBRARY_NAME}_SOURCE_DIR "${FETCHCONTENT_BASE_DIR}/${LIBRARY_NAME}-src")
+        add_subdirectory("${FETCHCONTENT_BASE_DIR}/${LIBRARY_NAME}-src/")
     endif()
 
 endmacro()
