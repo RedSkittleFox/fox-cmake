@@ -4,7 +4,7 @@ function(fetch_make_available_d3d12_agility_sdk library_name)
 		
 FetchContent_Declare_URL_Populate(
 		${library_name}
-		https://www.nuget.org/api/v2/package/Microsoft.Direct3D.D3D12/1.706.3-preview
+		https://www.nuget.org/api/v2/package/Microsoft.Direct3D.D3D12/1.608.0
 	)
 
 	file(GLOB_RECURSE d3d12-agility-inc "${${library_name}_SOURCE_DIR}/build/native/include/*.h")
