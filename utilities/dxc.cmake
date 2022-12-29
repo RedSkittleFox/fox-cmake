@@ -56,9 +56,15 @@ macro(add_dxc_shader_target PROJECT_NAME SOURCE_LIST SHADER_OUTPUT_PATH)
 		# Deduce shader type
 		get_filename_component(FILE_WLE ${FILE} NAME_WLE)
 		get_filename_component(FILE_SHADER_TYPE ${FILE_WLE} LAST_EXT)
-		string(SUBSTRING ${FILE_SHADER_TYPE} 1 -1 FILE_SHADER_TYPE)
-	
-		if(NOT ${FILE_SHADER_TYPE} MATCHES "ps|vs|gs|hs|ds|cs|lib|ms|as")
+		if(NOT ${FILE_SHADER_TYPE} STREQUAL "")
+			string(SUBSTRING ${FILE_SHADER_TYPE} 1 -1 FILE_SHADER_TYPE)
+		else()
+			set(FILE_SHADER_TYPE "inc")
+		endif()
+
+		if(${FILE_SHADER_TYPE} STREQUAL "inc")
+			# Do nothing
+		elseif(NOT ${FILE_SHADER_TYPE} MATCHES "ps|vs|gs|hs|ds|cs|lib|ms|as")
 			MESSAGE("Unknown extension for shader source '${FILE}'.")
 		else()
 			# Set file shader type prop		

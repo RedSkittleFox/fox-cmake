@@ -12,4 +12,5 @@ include(fetch_content/DirectXMath.cmake)
 include(fetch_content/eastl.cmake)
 include(fetch_content/gsl.cmake)
 include(fetch_content/d3d12_memory_allocator.cmake)
+include(fetch_content/ufbx.cmake)
 
