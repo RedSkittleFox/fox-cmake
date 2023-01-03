@@ -53,6 +53,11 @@ function(fetch_make_available_d3dx12 library_name)
 		"${FETCHCONTENT_BASE_DIR}/d3dx12/d3dx12_check_feature_support.h"
 		)
 
+	file(DOWNLOAD 
+		"https://raw.githubusercontent.com/microsoft/DirectX-Headers/main/include/directx/d3dx12_property_format_table.h" 
+		"${FETCHCONTENT_BASE_DIR}/d3dx12/d3dx12_property_format_table.h"
+		)
+
 	add_library(${library_name} INTERFACE "${FETCHCONTENT_BASE_DIR}/d3dx12/d3dx12.h")
 	target_include_directories(${library_name} INTERFACE "${FETCHCONTENT_BASE_DIR}/d3dx12/")
 
